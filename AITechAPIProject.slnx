@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="AITech.API/AITech.API.csproj" />
+  <Project Path="AITech.Business/AITech.Business.csproj" />
+  <Project Path="AITech.DataAccess/AITech.DataAccess.csproj" />
+  <Project Path="AITech.DTO/AITech.DTO.csproj" />
+  <Project Path="AITech.Entity/AITech.Entity.csproj" />
+  <Project Path="AITech.WebUI/AITech.WebUI.csproj" />
+</Solution>
