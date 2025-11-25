@@ -38,5 +38,12 @@ namespace AITech.API.Controllers
             await categoryService.TUpdateAsync(categoryDto);
             return Ok("Kategori Güncellendi");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await categoryService.TDeleteAsync(id);
+            return Ok("Kategori Silindi");
+        }
     }
 }
