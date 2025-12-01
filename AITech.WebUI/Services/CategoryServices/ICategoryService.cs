@@ -1,13 +1,12 @@
 ﻿using AITech.WebUI.DTOs.CategoryDtos;
 
-namespace AITech.WebUI.Services.CategoryServices
+namespace AITech.WebUI.Services.CategoryServices;
+
+public interface ICategoryService
 {
-    public interface ICategoryService
-    {
-        Task<List<ResultCategoryDto>> GetAllAsync();
-        Task<UpdateCategoryDto> GetByIdAsync();
-        Task CreateAsync(CreateCategoryDto categoryDto);
-        Task UpdateAsync(UpdateCategoryDto categoryDto);
-        Task DeleteAsync(int id);
-    }
+    Task<List<ResultCategoryDto>> GetAllAsync();
+    Task<UpdateCategoryDto> GetByIdAsync();
+    Task CreateAsync(CreateCategoryDto categoryDto);
+    Task UpdateAsync(UpdateCategoryDto categoryDto);
+    Task DeleteAsync(int id);
 }
