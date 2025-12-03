@@ -9,7 +9,5 @@ namespace AITech.DataAccess.Repositories.CategoryRepositories
         public CategoryRepository(AppDbContext _context) : base(_context)
         {
         }
-
-
     }
 }

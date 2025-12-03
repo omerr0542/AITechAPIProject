@@ -1,5 +1,6 @@
 ﻿using AITech.WebUI.DTOs.CategoryDtos;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace AITech.WebUI.Services.CategoryServices
 {
@@ -13,14 +14,17 @@ namespace AITech.WebUI.Services.CategoryServices
             _httpClient = httpClient;
         }
 
-        public Task CreateAsync(CreateCategoryDto categoryDto)
+        public async Task CreateAsync(CreateCategoryDto categoryDto)
         {
-            throw new NotImplementedException();
+            var jsonContent = JsonConvert.SerializeObject(categoryDto);
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            await _httpClient.PostAsync("Categories", content);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _httpClient.DeleteAsync($"Categories/{id}");
         }
 
         public async Task<List<ResultCategoryDto>> GetAllAsync()
@@ -38,14 +42,25 @@ namespace AITech.WebUI.Services.CategoryServices
             return categories;
         }
 
-        public Task<UpdateCategoryDto> GetByIdAsync()
+        public async Task<UpdateCategoryDto> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.GetAsync("Categories/"+ id);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Kategori verisi alınamadı.");
+            }
+
+            var jsonContent = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<UpdateCategoryDto>(jsonContent);
         }
 
-        public Task UpdateAsync(UpdateCategoryDto categoryDto)
+        public async Task UpdateAsync(UpdateCategoryDto categoryDto)
         {
-            throw new NotImplementedException();
+            var jsonContent = JsonConvert.SerializeObject(categoryDto);
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            await _httpClient.PutAsync("Categories", content);
         }
     }
 }
