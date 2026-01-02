@@ -8,7 +8,7 @@ namespace AITech.WebUI.Services.ProjectServices
 
         public ProjectService(HttpClient httpClient)
         {
-            httpClient.BaseAddress = new Uri("https://localhost:7243/api/");
+            httpClient.BaseAddress = new Uri("https://localhost:7000/api/");
             _httpClient = httpClient;
         }
 
